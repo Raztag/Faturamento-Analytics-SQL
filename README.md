@@ -25,5 +25,24 @@ O banco foi estruturado seguindo o modelo estrela (Star Schema):
 ## 📈 Exemplo de Insight Gerado
 Através da consulta de agregação, identificamos que a **Rejeição 703 (Data-Hora de Emissão Atrasada)** no CD de Cachoeirinha é o principal fator de retenção de carga por valor financeiro, indicando a necessidade de treinamento operacional no fechamento/abertura de turnos.
 
----
-*Projeto desenvolvido para fins de estudo e portfólio.*
+## 🔍 Análise de Impacto Financeiro (A Query Principal)
+
+O coração da análise de dados deste projeto reside em identificar não apenas **quais** erros ocorrem, mas **quanto** dinheiro eles estão travando na expedição. 
+
+A consulta abaixo cruza as transações da tabela Fato com o Dicionário de Erros (Dimensão), filtrando apenas as notas rejeitadas. Em seguida, os dados são agrupados por departamento responsável, gerando um ranking do maior para o menor impacto financeiro.
+
+--------
+
+Projeto desenvolvido para fins de estudo e portfólio.
+
+
+```sql
+SELECT 
+    E.Responsabilidade,
+    COUNT(P.ID_Pedido) AS Total_Ocorrencias,
+    FORMAT(SUM(P.Valor_Total), 'C', 'pt-BR') AS Valor_Total_Retido
+FROM Pedidos P
+JOIN Erros_SEFAZ E ON P.Codigo_Erro = E.Codigo_Erro
+WHERE P.Status_NFe = 'Rejeitada'
+GROUP BY E.Responsabilidade
+ORDER BY SUM(P.Valor_Total) DESC;
