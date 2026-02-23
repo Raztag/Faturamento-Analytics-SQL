@@ -1,7 +1,7 @@
 USE Faturamento_Operacional;
 GO
 
-/*Ranking de Responsabilidades por Erros de Rejeição*/
+/*Ranking de Responsabilidades por Erros de RejeiÃ§Ã£o*/
 SELECT 
     E.Responsabilidade,
     COUNT(P.ID_Pedido) AS Total_Ocorrencias,
@@ -14,7 +14,7 @@ ORDER BY SUM(P.Valor_Total) DESC;
 
 -----------------------------------------------------------------------
 
-/*Ranking de Lojas com Maior Volume de Rejeição*/
+/*Ranking de Lojas com Maior Volume de RejeiÃ§Ã£o*/
 SELECT 
     L.Nome_Loja,
     L.Cidade,
@@ -28,7 +28,7 @@ ORDER BY SUM(P.Valor_Total) DESC;
 
 -----------------------------------------------------------------------
 
-/*Ranking de Erros de Rejeição com Responsabilidade de TI*/
+/*Ranking de Erros de RejeiÃ§Ã£o com Responsabilidade de TI*/
 SELECT 
     E.Codigo_Erro,
     E.Descricao_Erro,
@@ -41,7 +41,7 @@ ORDER BY Frequencia DESC;
 
 -----------------------------------------------------------------------
 
-/*Ranking de Erros de Rejeição por período do dia*/
+/*Ranking de Erros de RejeiÃ§Ã£o por perÃ­odo do dia*/
 SELECT 
     DATEPART(HOUR, Data_Pedido) AS Hora_do_Dia,
     COUNT(*) AS Total_Pedidos,
