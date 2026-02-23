@@ -31,7 +31,23 @@ O coração da análise de dados deste projeto reside em identificar não apenas
 
 A consulta abaixo cruza as transações da tabela Fato com o Dicionário de Erros (Dimensão), filtrando apenas as notas rejeitadas. Em seguida, os dados são agrupados por departamento responsável, gerando um ranking do maior para o menor impacto financeiro.
 
---------
+---------------
+
+Feature Visualização com Python
+
+## 🛠️ Tecnologias Utilizadas
+* **Banco de Dados:** SQL Server (Scripts DDL, DML e DQL)
+* **Linguagem:** Python 3.12
+* **Bibliotecas:** Pandas (Tratamento), PyODBC (Conexão), Matplotlib/Seaborn (Visualização)
+
+----------------
+
+## 📂 Como utilizar
+1. Execute os scripts `.sql` na ordem numérica para criar e popular o banco.
+2. Configure a conexão no arquivo `.py` com os dados do seu servidor.
+3. Rode o script Python para atualizar os insights visuais.
+
+----------------
 
 Projeto desenvolvido para fins de estudo e portfólio.
 
